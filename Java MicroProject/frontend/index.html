@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>IndicMeasure</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+<body>
+
+    <!-- ================================
+         HEADER
+    ================================= -->
+
+    <header class="page-header">
+
+        <div class="brand-mark">
+            ◆
+        </div>
+
+        <h1>
+            IndicMeasure
+        </h1>
+
+        <div class="header-divider">
+            <span></span>
+            <span>◆</span>
+            <span></span>
+        </div>
+
+        <p>
+            Historical & Traditional Indian Unit Converter
+        </p>
+
+    </header>
+
+
+    <!-- ================================
+         MAIN CONVERTER
+    ================================= -->
+
+    <main>
+
+        <section class="converter-card">
+
+
+            <!-- FROM SIDE -->
+
+            <div class="conversion-side">
+
+                <div class="side-title">
+
+                    <div class="side-icon">
+                        ⇩
+                    </div>
+
+                    <div>
+
+                        <span class="side-label">
+                            FROM
+                        </span>
+
+                        <h2>
+                            Convert From
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <label for="fromSystem">
+                    System
+                </label>
+
+                <select
+                    id="fromSystem"
+                    onchange="updateFromUnits()"
+                >
+
+                    <option value="Traditional">
+                        Traditional
+                    </option>
+
+                    <option value="Metric">
+                        Metric
+                    </option>
+
+                </select>
+
+
+                <label for="fromCategory">
+                    Category
+                </label>
+
+                <select
+                    id="fromCategory"
+                    onchange="updateFromUnits()"
+                >
+
+                    <option value="Mass">
+                        Mass
+                    </option>
+
+                    <option value="Length">
+                        Length
+                    </option>
+
+                    <option value="Volume">
+                        Volume
+                    </option>
+
+                    <option value="Area">
+                        Area
+                    </option>
+
+                </select>
+
+
+                <label for="fromUnit">
+                    Unit
+                </label>
+
+                <select
+                    id="fromUnit"
+                    onchange="showUnitInformation()"
+                ></select>
+
+            </div>
+
+
+            <!-- CENTER SWAP -->
+
+            <div class="swap-area">
+
+                <div class="swap-line"></div>
+
+                <div class="swap-button">
+                    ⇄
+                </div>
+
+                <div class="swap-line"></div>
+
+            </div>
+
+
+            <!-- TO SIDE -->
+
+            <div class="conversion-side">
+
+                <div class="side-title">
+
+                    <div class="side-icon">
+                        ⇧
+                    </div>
+
+                    <div>
+
+                        <span class="side-label">
+                            TO
+                        </span>
+
+                        <h2>
+                            Convert To
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <label for="toSystem">
+                    System
+                </label>
+
+                <select
+                    id="toSystem"
+                    onchange="updateToUnits()"
+                >
+
+                    <option value="Metric">
+                        Metric
+                    </option>
+
+                    <option value="Traditional">
+                        Traditional
+                    </option>
+
+                </select>
+
+
+                <label for="toCategory">
+                    Category
+                </label>
+
+                <select
+                    id="toCategory"
+                    onchange="updateToUnits()"
+                >
+
+                    <option value="Mass">
+                        Mass
+                    </option>
+
+                    <option value="Length">
+                        Length
+                    </option>
+
+                    <option value="Volume">
+                        Volume
+                    </option>
+
+                    <option value="Area">
+                        Area
+                    </option>
+
+                </select>
+
+
+                <label for="toUnit">
+                    Unit
+                </label>
+
+                <select
+                    id="toUnit"
+                    onchange="showUnitInformation()"
+                ></select>
+
+            </div>
+
+
+            <!-- VALUE -->
+
+            <div class="value-section">
+
+                <label for="value">
+                    Value to Convert
+                </label>
+
+                <div class="value-input-wrapper">
+
+                    <span class="calculator-icon">
+                        ▣
+                    </span>
+
+                    <input
+                        type="number"
+                        id="value"
+                        placeholder="Enter value"
+                    >
+
+                    <span class="value-hint">
+                        Enter value
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- CONVERT BUTTON -->
+
+            <button
+                class="convert-button"
+                onclick="convert()"
+            >
+
+                <span class="convert-icon">
+                    ↻
+                </span>
+
+                Convert
+
+            </button>
+
+
+            <!-- RESULT -->
+
+            <div
+                id="result"
+                class="result-box"
+            >
+
+                <span class="result-placeholder">
+                    Your conversion result will appear here
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================
+             INFORMATION + HISTORY
+        ================================= -->
+
+        <section class="lower-grid">
+
+
+            <!-- UNIT INFORMATION -->
+
+            <div class="information-card">
+
+                <div class="card-header">
+
+                    <div class="header-icon">
+                        i
+                    </div>
+
+                    <div>
+
+                        <span>
+                            EXPLORE
+                        </span>
+
+                        <h2>
+                            Unit Information
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div id="unitInfo">
+
+                    <div class="empty-state">
+
+                        <div class="empty-icon">
+                            ◈
+                        </div>
+
+                        <p>
+                            Select a unit to view its
+                            historical and regional information.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- HISTORY -->
+
+            <div class="history-card">
+
+                <div class="card-header">
+
+                    <div class="header-icon history-icon">
+                        ↶
+                    </div>
+
+                    <div>
+
+                        <span>
+                            RECENT
+                        </span>
+
+                        <h2>
+                            Conversion History
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="historyList"
+                    class="history-list"
+                >
+
+                    <div class="empty-history">
+
+                        <div class="history-empty-icon">
+                            ◷
+                        </div>
+
+                        <p>
+                            No conversions yet.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="clear-history-button"
+                    onclick="clearHistory()"
+                >
+
+                    <span>
+                        ♲
+                    </span>
+
+                    Clear History
+
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================================
+         FOOTER
+    ================================= -->
+
+    <footer>
+
+        <div class="footer-line"></div>
+
+        <p>
+            IndicMeasure
+            <span>•</span>
+            Preserving India's Measurement Heritage
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
